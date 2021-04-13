@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <!-- Page content -->
+    	<form action="/register" method="POST" style="margin-left: 40%;">
+    		<h3 style="margin-left: 15%;">Đăng ký</h3>
+  		<label for="username">Tài khoản:</label>
+  		<input type="text" id="username" name="username" placeholder="Tên đăng ký"><br><br>
+ 	 	<label for="password">Mật khẩu :</label>
+  		<input type="password" id="pass" name="password" placeholder="Mật khẩu"><br><br>
+  		<input type="submit" value="Register">
+        <label>Có tài khoản?<a href="{{ url_for("login") }}">Đăng nhập</a></label>
+	</form>
+
+{% endblock %}

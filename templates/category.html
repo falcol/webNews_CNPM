@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %} {{ data[0] }} {% endblock %}
+
+{% block content %}
+<div class="w3-content" style="max-width:1000px">
+
+    <!-- The thao Section -->
+    <!--title lon-->
+    <div class="w3-container w3-padding-32" id="projects">
+        <h3 style="font-size: 40px; padding-left: 45%; background-color: antiquewhite;">{{ data[0] }}</h3>
+    </div>
+
+    <!--thong tin-->
+    {% for i in data[1] %}
+    <div class="w3-row w3-margin">
+        <div class="w3-third">
+            <img src="{{ i["img"] }}" style="width:100%;min-height:200px">
+        </div>
+        <div class="w3-twothird w3-container">
+            <h2>{{ i["title"] }}</h2>
+            <p>
+                {{ i["sapo"] }}
+            </p>
+            <a href="{{ i["href"] }}" style="text-decoration: none; color: coral;">Đọc tin</a>
+        </div>
+
+    </div>
+    {% endfor %}
+    <!-- End page content -->
+</div>
+
+{% endblock%}

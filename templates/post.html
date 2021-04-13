@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title%} Đăng bài {% endblock %}
+
+{% block content%}
+<form action="/postnews" method="POST" style="width: 100%;margin-left:40%;">
+    <h3>Đăng bài</h3>
+    <label for="image">Link ảnh:</label>
+    <input type="text" id="image" name="image" style="margin-left: 20px;"><br><br>
+    <label for="tit">title :</label>
+    <input type="text" id="tit" name="tit" style="margin-left: 65px;"><br><br>
+    <label for="link">Link bài viết :</label>
+    <input type="text" id="link" name="link"><br><br>
+    <label for="intro">Giới thiệu :</label>
+    <input type="text" id="intro" name="intro" style="margin-left: 25px;"><br><br>
+    <label for="cate">Thể loại:</label>  
+    <select id="cate" name="cate">
+        <option value="1">Tin tức</option>
+        <option value="2">Thế giới</option>
+        <option value="3">Thể thao</option>
+        <option value="4">Kinh tế</option>
+        <option value="5">Pháp luật</option>
+    </select>
+    <input type="submit" value="Đăng bài">
+   
+</form>
+
+{% endblock %}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<title>{% block title %}{% endblock %}</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="./style.css">
+
+<body>
+
+    <!-- Navbar (sit on top) -->
+    <div class="w3-top">
+        <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+            <a href="{{ url_for("home") }}" class="w3-bar-item w3-button"><strong>Tin tức</strong>Trong ngày</a>
+            <!-- Float links to the right. Hide them on small screens -->
+            <div class="w3-right w3-hide-small">
+                <a href="{{ url_for("home") }}" class="w3-bar-item w3-button">Home</a>
+                <a href="{{ url_for("corona") }}" class="w3-bar-item w3-button">Covid</a>
+                <a href="{{ url_for("category", cate_id=1) }}" class="w3-bar-item w3-button">Tin tức</a>
+                <a href="{{ url_for("category", cate_id=2) }}" class="w3-bar-item w3-button">Thế giới</a>
+                <a href="{{ url_for("category", cate_id=3) }}" class="w3-bar-item w3-button">Thể thao</a>
+                <a href="{{ url_for("category", cate_id=4) }}" class="w3-bar-item w3-button">Kinh tế</a>
+                <a href="{{ url_for("category", cate_id=5) }}" class="w3-bar-item w3-button">Pháp luật</a>
+                {% if not login %}
+                    <a href="{{url_for("login") }}" class="w3-bar-item w3-button">Đăng nhập</a>
+                {% else %}
+                    <div class="w3-dropdown-hover">
+                        <button class="w3-button w3-black" style="display: flex;">user:{{ username }}</button>
+                        <div class="w3-dropdown-content w3-bar-block w3-border">
+                            <a href="{{ url_for("postnews") }}" class="w3-bar-item w3-button">Đăng bài</a>
+                            <a href="{{ url_for("logout") }}" class="w3-bar-item w3-button">Đăng xuất</a>
+                        </div>
+                    </div>
+
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="w3-display-container w3-content w3-wide" style="max-width:1000px;" id="home">
+        <img class="w3-image"
+            src="https://xmedia.nguoiduatin.vn/2017/6/21/9830/nong-co-min-dam-1498020935.jpg"
+            alt="Architecture" width="1000" height="200">
+        <div class="w3-display-middle w3-margin-top w3-center">
+            <h1 class="w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min"><b>Tin tức</b></span>
+                <span class="w3-hide-small w3-black">Trong ngày</span></h1>
+        </div>
+    </header>
+
+    <!-- Page content -->
+    {% block content %}{% endblock %}
+
+
+    <!-- Footer -->
+    <footer class="w3-center w3-black w3-padding-16" style="margin-top: 20px;">
+        <p>Sinh viên: Bùi ĐÌnh Ngọc</p>
+        <p>Lớp: D13CNPM4</p>
+        <p>Chuyên ngành: Công nghệ phần mềm</p>
+        <p>Khoa: Công nghệ thông tin</p>
+        <p>Trường Đại học Điện Lực</p>
+    </footer>
+    {% block script %}{% endblock %}
+
+</body>
+
+</html>

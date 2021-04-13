@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block title %} Thông tin covid {% endblock %}
+
+{% block content %}
+<!-- Page content -->
+
+<h2 style="margin-left: 40%;">Thông tin covid</h2>
+
+<div class="w3-row">
+  <a href="javascript:void(0)" onclick="openCity(event, 'Thegioi');">
+    <div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding">Thế giới</div>
+  </a>
+  <a href="javascript:void(0)" onclick="openCity(event, 'VietNam');">
+    <div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding">Việt Nam</div>
+  </a>
+</div>
+
+<div id="Thegioi" class="w3-container city" style="display:block">
+  <table class="w3-table-all">
+    <thead>
+      <tr class="w3-light-grey">
+        <th>Lãnh thổ</th>
+        <th>Lây nhiễm</th>
+        <th>Tử vong</th>
+        <th>Nghiêm trọng</th>
+        <th>Phục hồi</th>
+      </tr>
+    </thead>
+
+    {% for info in data %}
+    <tr>
+      <td>{{ info["territory"] }}</td>
+      <td>{{ info["infection"] }}</td>
+      <td>{{ info["death"] }}</td>
+      <td>{{ info["serious"] }}</td>
+      <td>{{ info["cure"] }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+
+<div id="VietNam" class="w3-container city" style="display:none">
+  <table class="w3-table-all">
+    <tr class="w3-light-grey">
+      <th>Địa điểm</th>
+      <th>Lây nhiễm</th>
+      <th>Tử vong</th>
+      <th>Phục hồi</th>
+    </tr>
+    {% for info2 in data2 %}
+    <tr>
+      <td>{{ info2["place"] }}</td>
+      <td>{{ info2["infection"] }}</td>
+      <td>{{ info2["death"] }}</td>
+      <td>{{ info2["cured"] }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+
+<!-- End page content -->
+</div>
+{% endblock %}
+
+
+{% block script %}
+<script>
+  function openCity(evt, cityName) {
+    var i, x, tablinks;
+    x = document.getElementsByClassName("city");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablink");
+    for (i = 0; i < x.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" w3-border-red", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.firstElementChild.className += " w3-border-red";
+  }
+</script>
+{% endblock %}
